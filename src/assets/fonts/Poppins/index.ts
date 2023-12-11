@@ -1,0 +1,9 @@
+export const Poppins_Black = require('./Poppins-Black.ttf');
+export const Poppins_Bold = require('./Poppins-Bold.ttf');
+export const Poppins_ExtraBold = require('./Poppins-ExtraBold.ttf');
+export const Poppins_ExtraLight = require('./Poppins-ExtraLight.ttf');
+export const Poppins_Light = require('./Poppins-Light.ttf');
+export const Poppins_Medium = require('./Poppins-Medium.ttf');
+export const Poppins_Regular = require('./Poppins-Regular.ttf');
+export const Poppins_SemiBold = require('./Poppins-SemiBold.ttf');
+export const Poppins_Then = require('./Poppins-Thin.ttf');
