@@ -7,6 +7,7 @@ import {
   Text as NativeText,
   Image as NativeImage,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import React, { useMemo, useRef, useState } from "react";
 import { HomeContainerProps } from "../../models/NavigatorModels/MainStackProps";
@@ -23,14 +24,28 @@ import dayjs from "dayjs";
 import Share, { Social } from "react-native-share";
 import SingleElement from "@/components/TemplateComponets/SingleElement";
 import ViewShot from "react-native-view-shot";
+import ElementMovementController from "@/components/TemplateComponets/ElementMovementController";
+import NewElementMenu from "@/components/TemplateComponets/NewElementMenu";
+import { useAtom, useAtomValue } from "jotai";
+import {
+  ElementListAtom,
+  activeElementID,
+  canvasElementModeAtom,
+} from "@/atoms/CanvasElements";
+import {
+  GestureHandlerRootView,
+  TextInput,
+} from "react-native-gesture-handler";
+const { width, height } = Dimensions.get("window");
 
 export default function HomeContainer({
   navigation,
   route,
 }: HomeContainerProps) {
-  const { width, height } = useWindowDimensions();
   const ref = useRef();
   const [ogImage, setOgImage] = useState<string | null>(null);
+  const ElementList = useAtomValue(ElementListAtom);
+  const [canvasMode, setCanvasMode] = useAtom(canvasElementModeAtom);
 
   const canvas_dimension = useMemo(() => {
     let CD_BASE = getBaseCanvasPercentage(width, ST.canvasDimensions.width);
@@ -48,23 +63,6 @@ export default function HomeContainer({
       console.log("do something with ", uri);
       setOgImage(uri);
     });
-    // let data = canvasRef.current?.makeImageSnapshot();
-    // let originalImage = data?.encodeToBase64();
-
-    // if (originalImage) {
-    //   let fileName = `${RNFS.DocumentDirectoryPath}/Canva_${dayjs().format(
-    //     "YYYYMMDD_hh_mm_ss"
-    //   )}.png`;
-    //   await RNFS.writeFile(fileName, originalImage, "base64")
-    //     .then((success) => {
-    //       console.log("FILE WRITTEN!", `file://${fileName}`);
-    //       setOgImage(`file://${fileName}`);
-    //       console.log("makeAndShareImage", data?.getImageInfo());
-    //     })
-    //     .catch((err) => {
-    //       console.log(err.message);
-    //     });
-    // }
   }
 
   function shareImage() {
@@ -95,13 +93,12 @@ export default function HomeContainer({
         }}
       >
         <View
-
           style={{
             width: canvas_dimension.width,
             height: canvas_dimension.width,
           }}
         >
-          {ST.canvasElement.map((ce, index) => {
+          {ElementList.map((ce, index) => {
             return (
               <SingleElement
                 key={index}
@@ -121,8 +118,22 @@ export default function HomeContainer({
           })}
         </View>
       </ViewShot>
+      {canvasMode.mode == "View" ? (
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            height: height / 2,
+          }}
+        >
+          <ElementMovementController />
+          <NewElementMenu />
+        </View>
+      ) : (
+        <ElementEditView />
+      )}
 
-      <View style={styles.bottomSection}>
+      {/* <View style={styles.bottomSection}>
         <Pressable onPress={makeAndShareImage} style={styles.button}>
           <NativeText style={{ color: "white" }}>Create Image</NativeText>
         </Pressable>
@@ -131,7 +142,7 @@ export default function HomeContainer({
             <NativeImage source={{ uri: ogImage }} height={100} width={100} />
           </TouchableOpacity>
         )}
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -141,6 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(243,243,243,1)",
     borderWidth: 1,
     borderColor: "black",
+    height: height / 2,
   },
   button: {
     backgroundColor: "green",
@@ -154,3 +166,71 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+function ElementEditView() {
+  const [canvasMode, setCanvasMode] = useAtom(canvasElementModeAtom);
+  const [currentElementId, setCurrentID] = useAtom(activeElementID);
+  const [ElementList,setElementList] = useAtom(ElementListAtom);
+
+  const currentItem = useMemo(() => {
+    if (ElementList && currentElementId) {
+      return ElementList[currentElementId];
+    } else {
+      return null;
+    }
+  }, [ElementList, currentElementId]);
+
+
+  if (currentItem == null) {
+    return <></>;
+  }
+
+  if (canvasMode.elementType == "TEXT") {
+    return (
+      <GestureHandlerRootView
+        style={{
+          height: height / 3,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <TextInput
+         
+          placeholder="Text"
+          style={{
+            borderRadius: 10,
+            borderColor: "black",
+            borderWidth: 1,
+            width: 220,
+            paddingHorizontal: 20,
+            paddingVertical: 10,
+          }}
+          autoFocus={true}
+          autoCorrect={true}
+          defaultValue={currentItem.meta.text}
+          onChangeText={(text)=>{
+            try {
+   
+              let mapped = ElementList.map((el,eli)=>{
+                if(eli == currentElementId){
+                  return {...el,meta:{...el.meta,text}}
+                }else{
+                  return el
+                }
+              })
+              setElementList(mapped)
+
+            } catch (error) {
+              
+            }
+          }}
+          onBlur={()=>{
+            setCanvasMode({mode:'View',elementType:null})
+          }}
+        />
+      </GestureHandlerRootView>
+    );
+  } else {
+    return <></>;
+  }
+}

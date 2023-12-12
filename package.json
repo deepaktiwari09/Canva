@@ -30,6 +30,7 @@
     "@types/react-native-vector-icons": "^6.4.13",
     "babel-plugin-module-resolver": "^5.0.0",
     "dayjs": "^1.11.9",
+    "jotai": "^2.6.0",
     "react": "18.2.0",
     "react-native": "0.72.3",
     "react-native-device-info": "^10.8.0",

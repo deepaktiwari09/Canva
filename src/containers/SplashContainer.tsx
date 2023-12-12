@@ -17,7 +17,8 @@ export default function SplashContainer({
         if(res.isConnected){
           navigateAndSimpleReset('MainNavigator')
         }else{
-          navigateAndSimpleReset('NoInternet')
+          // navigateAndSimpleReset('NoInternet')
+          navigateAndSimpleReset('MainNavigator')
         }
       })
     }, 3000);
