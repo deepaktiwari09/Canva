@@ -15,7 +15,7 @@ export default function SplashContainer({
     setTimeout(() => {
       NetInfo.fetch().then(res=>{
         if(res.isConnected){
-          navigateAndSimpleReset('AuthNavigator')
+          navigateAndSimpleReset('MainNavigator')
         }else{
           navigateAndSimpleReset('NoInternet')
         }

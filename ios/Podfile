@@ -25,8 +25,9 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'reactnativeseed' do
+target 'canva' do
   config = use_native_modules!
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
 
   # Flags change depending on the env values.
   flags = get_default_flags()
@@ -45,7 +46,7 @@ target 'reactnativeseed' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'reactnativeseedTests' do
+  target 'canvaTests' do
     inherit! :complete
     # Pods for testing
   end

@@ -26,7 +26,7 @@ function App(): JSX.Element {
         <PersistGate persistor={persistor}>
           <Provider store={store}>
             <Application />
-            <AddButton />
+ 
           </Provider>
         </PersistGate>
       </SafeAreaView>

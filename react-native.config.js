@@ -5,6 +5,7 @@ module.exports = {
         ios: null,
       },
     },
+
   },
     assets: [
         './src/assets/fonts/Lato',
