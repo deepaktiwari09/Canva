@@ -63,11 +63,11 @@ export default function SingleElement({
 }: props) {
   let rectHeight = useMemo(
     () => getDimensionValue(basePercentage, rectDimensionData.oHeight),
-    []
+    [rectDimensionData.oHeight]
   );
   let rectWidth = useMemo(
     () => getDimensionValue(basePercentage, rectDimensionData.oWidth),
-    []
+    [rectDimensionData.oWidth]
   );
   const [RectDimension, resetReactDimension] = useAtom(activeElementAtom);
   const [activeIndex, setActiveIndex] = useAtom(activeElementID);

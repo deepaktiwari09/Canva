@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
 import React from "react";
 import { useAtom, useSetAtom } from "jotai";
-import { ElementListAtom } from "@/atoms/CanvasElements";
+import { ElementListAtom, activeElementID } from "@/atoms/CanvasElements";
+import Entypo from "react-native-vector-icons/Entypo";
 
 const MenuList = [
   {
@@ -44,11 +45,12 @@ const MenuList = [
 ];
 
 type props = {
-}
+  onSharePostPressed: () => void;
+};
 
-
-export default function NewElementMenu({}:props) {
-    const setElementList = useSetAtom(ElementListAtom)
+export default function NewElementMenu({ onSharePostPressed }: props) {
+  const [elements, setElementList] = useAtom(ElementListAtom);
+  const setActiveIndex = useSetAtom(activeElementID);
   return (
     <View style={styles.main}>
       <FlatList
@@ -63,10 +65,11 @@ export default function NewElementMenu({}:props) {
                 paddingVertical: 10,
                 borderRadius: 10,
                 backgroundColor: "rgba(150,200,250,1)",
-                marginHorizontal: 10,
+                marginHorizontal: 5,
               }}
-              onPress={()=>{
-                setElementList((prev)=> [...prev,item])
+              onPress={() => {
+                setElementList((prev) => [...prev, item]);
+                setActiveIndex(elements.length);
               }}
             >
               <Text style={{ fontSize: 12, fontWeight: "700" }}>
@@ -75,6 +78,11 @@ export default function NewElementMenu({}:props) {
             </Pressable>
           );
         }}
+        ListFooterComponent={
+          <Pressable onPress={onSharePostPressed}>
+            <Entypo name="share" size={28} color={"green"} />
+          </Pressable>
+        }
       />
     </View>
   );
@@ -84,7 +92,7 @@ const styles = StyleSheet.create({
   main: {
     alignItems: "center",
     justifyContent: "center",
-    height:80,
-    marginVertical:20
+    height: 80,
+    marginVertical: 10,
   },
 });
