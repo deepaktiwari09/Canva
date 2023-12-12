@@ -27,8 +27,8 @@ export const sampleTemples = {
     },
     {
       type: "TEXT",
-      xPos: 140,
-      yPos: 180,
+      xPos: 125,
+      yPos: 270,
       height: 100,
       width: 100,
       meta: {
