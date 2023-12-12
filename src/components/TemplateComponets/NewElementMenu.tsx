@@ -66,6 +66,7 @@ export default function NewElementMenu({ onSharePostPressed }: props) {
                 borderRadius: 10,
                 backgroundColor: "rgba(150,200,250,1)",
                 marginHorizontal: 5,
+                maxHeight:45
               }}
               onPress={() => {
                 setElementList((prev) => [...prev, item]);

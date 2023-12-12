@@ -105,7 +105,7 @@ export default function HomeContainer({
               <SingleElement
                 key={index}
                 basePercentage={canvas_dimension.baseP}
-                rectDimensionData={{
+                RectDimension={{
                   xPos: ce.xPos,
                   yPos: ce.yPos,
                   oWidth: ce.width,
@@ -130,7 +130,7 @@ export default function HomeContainer({
         >
           <ElementMovementController />
           <NewElementMenu onSharePostPressed={()=>{
-            console.log("dedew")
+            
             makeAndShareImage()
           }}/>
         </View>

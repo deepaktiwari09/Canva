@@ -33,7 +33,7 @@ const { height, width } = Dimensions.get("window");
 
 type props = {
   basePercentage: number;
-  rectDimensionData: {
+  RectDimension: {
     xPos: number;
     yPos: number;
     oHeight: number;
@@ -55,48 +55,42 @@ type props = {
 
 export default function SingleElement({
   basePercentage,
-  rectDimensionData,
+  RectDimension,
   isCenter,
   type,
   meta,
   layerIndex,
 }: props) {
   let rectHeight = useMemo(
-    () => getDimensionValue(basePercentage, rectDimensionData.oHeight),
-    [rectDimensionData.oHeight]
+    () => getDimensionValue(basePercentage, RectDimension.oHeight),
+    [RectDimension.oHeight]
   );
   let rectWidth = useMemo(
-    () => getDimensionValue(basePercentage, rectDimensionData.oWidth),
-    [rectDimensionData.oWidth]
+    () => getDimensionValue(basePercentage, RectDimension.oWidth),
+    [RectDimension.oWidth]
   );
-  const [RectDimension, resetReactDimension] = useAtom(activeElementAtom);
+  // const [RectDimension, resetReactDimension] = useAtom(activeElementAtom);
   const [activeIndex, setActiveIndex] = useAtom(activeElementID);
   const setElementList = useSetAtom(ElementListAtom);
   const setCanvasMode = useSetAtom(canvasElementModeAtom)
 
   const position = useMemo(() => {
-    if (activeIndex == layerIndex) {
-      rectDimensionData.xPos = RectDimension?.x ?? rectDimensionData.xPos;
-      rectDimensionData.yPos = RectDimension?.y ?? rectDimensionData.yPos;
-      return { ...rectDimensionData };
-    }
+
     if (isCenter) {
       let yPos = getElementCenterPositionValue(width, rectHeight);
       let xPos = getElementCenterPositionValue(width, rectWidth);
       return { xPos, yPos };
     } else {
-      let { xPos, yPos, ...rest } = rectDimensionData;
+      let { xPos, yPos, ...rest } = RectDimension;
       return { xPos, yPos };
     }
-  }, [isCenter, rectDimensionData, rectHeight, rectWidth, RectDimension]);
+  }, [isCenter, RectDimension, rectHeight, rectWidth]);
 
   const selectElement = () => {
-    resetReactDimension(null);
     setActiveIndex(layerIndex);
   };
 
   const removeElement = () => {
-    resetReactDimension(null);
     setActiveIndex(-1);
     setCanvasMode({mode:'View',elementType:null})
     setElementList((prev) => prev.filter((prv, prvi) => prvi != layerIndex));
