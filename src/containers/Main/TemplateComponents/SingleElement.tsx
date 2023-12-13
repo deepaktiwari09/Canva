@@ -32,7 +32,12 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 const { height, width } = Dimensions.get("window");
 
 type props = {
-  basePercentage: number;
+  canvasDimension: {
+    height: number;
+    width: number;
+    baseWP: number;
+    baseHP: number;
+  };
   RectDimension: {
     xPos: number;
     yPos: number;
@@ -54,7 +59,7 @@ type props = {
 };
 
 export default function SingleElement({
-  basePercentage,
+  canvasDimension,
   RectDimension,
   isCenter,
   type,
@@ -62,20 +67,19 @@ export default function SingleElement({
   layerIndex,
 }: props) {
   let rectHeight = useMemo(
-    () => getDimensionValue(basePercentage, RectDimension.oHeight),
+    () => getDimensionValue(canvasDimension.baseHP, RectDimension.oHeight),
     [RectDimension.oHeight]
   );
   let rectWidth = useMemo(
-    () => getDimensionValue(basePercentage, RectDimension.oWidth),
+    () => getDimensionValue(canvasDimension.baseWP, RectDimension.oWidth),
     [RectDimension.oWidth]
   );
   // const [RectDimension, resetReactDimension] = useAtom(activeElementAtom);
   const [activeIndex, setActiveIndex] = useAtom(activeElementID);
   const setElementList = useSetAtom(ElementListAtom);
-  const setCanvasMode = useSetAtom(canvasElementModeAtom)
+  const setCanvasMode = useSetAtom(canvasElementModeAtom);
 
   const position = useMemo(() => {
-
     if (isCenter) {
       let yPos = getElementCenterPositionValue(width, rectHeight);
       let xPos = getElementCenterPositionValue(width, rectWidth);
@@ -92,12 +96,12 @@ export default function SingleElement({
 
   const removeElement = () => {
     setActiveIndex(-1);
-    setCanvasMode({mode:'View',elementType:null})
+    setCanvasMode({ mode: "View", elementType: null });
     setElementList((prev) => prev.filter((prv, prvi) => prvi != layerIndex));
   };
 
   const editElement = () => {
-    setCanvasMode({mode:'Edit',elementType:type})
+    setCanvasMode({ mode: "Edit", elementType: type });
   };
 
   if (type == "VECTOR") {
@@ -192,8 +196,10 @@ export default function SingleElement({
           // height: rectHeight,
           // width: 400,
           backgroundColor:
-            activeIndex == layerIndex ? "rgba(10,10,10,.5)" : "transparent",
-          borderColor: activeIndex == layerIndex ? "black" : "white",
+            activeIndex == layerIndex ? "rgba(100,100,100,.1)" : "transparent",
+          borderColor: activeIndex == layerIndex ? "black" : "transparent",
+          paddingHorizontal: activeIndex == layerIndex ? 10 : 0,
+          paddingVertical: activeIndex == layerIndex ? 5 : 0,
           borderWidth: 1,
         }}
       >
@@ -212,6 +218,42 @@ export default function SingleElement({
         <EditElementButton
           isVisible={activeIndex == layerIndex}
           onEditPressed={editElement}
+          zIndex={layerIndex + 1}
+        />
+      </Pressable>
+    );
+  }
+
+  if (type == "EMOJI") {
+    const fontStyle = {
+      fontSize: meta.fontSize ?? 22,
+    };
+
+    return (
+      <Pressable
+        onPress={selectElement}
+        style={{
+          position: "absolute",
+          zIndex: layerIndex,
+          top: position.yPos,
+          left: position.xPos,
+          // height: rectHeight,
+          // width: 400,
+          backgroundColor: "transparent",
+          borderColor: activeIndex == layerIndex ? "black" : "transparent",
+          borderWidth: 1,
+        }}
+      >
+        <Text
+          style={{
+            ...fontStyle,
+          }}
+        >
+          {meta.text}
+        </Text>
+        <DeleteElementButton
+          isVisible={activeIndex == layerIndex}
+          onRemovePressed={removeElement}
           zIndex={layerIndex + 1}
         />
       </Pressable>

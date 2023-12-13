@@ -14,6 +14,14 @@ type canvasElementModeType = {
   elementType: keyof ElementTypes | null;
 };
 
+type canvasDimensions = {
+  height: number;
+  width: number;
+  baseWP: number;
+  baseHP: number;
+};
+
+export const canvasDimensionsAtom = atom<canvasDimensions | null>(null);
 export const ElementListAtom = atom<(typeof sampleTemples)["canvasElement"]>(
   sampleTemples.canvasElement
 );
