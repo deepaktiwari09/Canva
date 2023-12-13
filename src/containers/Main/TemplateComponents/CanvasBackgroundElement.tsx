@@ -129,7 +129,7 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
               />
               <Text>Gallery</Text>
             </Pressable>
-            <Pressable
+            {/* <Pressable
               style={{
                 height: 100,
                 width: 100,
@@ -142,7 +142,7 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
             >
               <MaterialCommunityIcons name="camera" size={32} color={"black"} />
               <Text>Camera</Text>
-            </Pressable>
+            </Pressable> */}
           </View>
 
           <Text
