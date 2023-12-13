@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable, Text } from "react-native";
 import React, { useRef } from "react";
 import { HomeContainerProps } from "../../models/NavigatorModels/MainStackProps";
 
@@ -16,6 +16,7 @@ export default function HomeContainer({
     <View style={styles.main}>
       <CanvasEditorPanel CanvasRef={canvasRef} />
       <BottomPanel CanvasRef={canvasRef} />
+      
     </View>
   );
 }

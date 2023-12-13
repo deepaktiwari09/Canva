@@ -33,6 +33,15 @@ export default function BottomPanel({ CanvasRef }: props) {
             makeAndShareImage("Share via","New Messsage");
           }}
         />
+      </View>
+      <View style={{height:100,justifyContent:'center',alignItems:'center'}}>
+        <Pressable 
+          onPress={()=>{
+            makeAndShareImage("I created this image","New Image")
+          }}
+          style={{backgroundColor:'green',paddingHorizontal:20,paddingVertical:5,borderRadius:15}}>
+            <Text style={{color:'white',fontSize:20}}>Share</Text>
+          </Pressable>
 
       </View>
     </View>
@@ -42,9 +51,10 @@ export default function BottomPanel({ CanvasRef }: props) {
 
   async function makeAndShareImage(title: string, message: string) {
     try {
-      let uri = await CanvasRef.current?.capture();
-      if(uri){
-        await Share.open({title,message,uri});
+      let url = await CanvasRef.current?.capture();
+
+      if(url){
+        await Share.open({title,message,url});
       }
       
     } catch (error) {
@@ -57,7 +67,7 @@ const styles = StyleSheet.create({
   main: {
     height: height - width,
     // backgroundColor: "green",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
   },
   container:{
     paddingVertical: 10,
