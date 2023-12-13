@@ -9,6 +9,7 @@ import { MenuList } from "../constents";
 import VectorElement from "./VectorElement";
 import ImageElement from "./ImageElement";
 import EmojiElement from "./EmojiElement";
+import CanvasBackgroundElement from "./CanvasBackgroundElement";
 
 type props = {
   onSharePostPressed: () => void;
@@ -29,6 +30,7 @@ export default function NewElementMenu({ onSharePostPressed }: props) {
               <VectorElement isVisible={item.type == 'VECTOR'}/>
               <ImageElement isVisible={item.type == 'IMAGE'}/>
               <EmojiElement isVisible={item.type == 'EMOJI'}/>
+              <CanvasBackgroundElement isVisible={item.type == 'IMAGE_BACKGROUND'}/>
             </View>
           );
         }}
@@ -56,8 +58,8 @@ const styles = StyleSheet.create({
   main: {
     flexDirection: "row",
     flexWrap: "wrap",
-    borderRadius:20,
-    backgroundColor: "blue",
+    // borderRadius:20,
+    backgroundColor: "lightblue",
     paddingVertical: 5,
     paddingHorizontal:5,
     width: 155,

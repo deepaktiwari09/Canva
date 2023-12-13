@@ -20,26 +20,29 @@ import {
 
 const { width, height } = Dimensions.get("window");
 
+import {
+  Shadow,
+  Fill,
+  RoundedRect,
+  Canvas
+} from "@shopify/react-native-skia";
+ 
+const Neumorphism = () => {
+  return (
+    <Canvas style={{ width: 256, height: 256 }}>
+      <Fill color="rgba(243,243,243,1)" />
+      <RoundedRect x={32} y={32} width={192} height={192} r={32} color="white">
+        <Shadow dx={12} dy={12} blur={25} color="lightblue" />
+        <Shadow dx={-12} dy={-12} blur={25} color="lightblue" />
+      </RoundedRect>
+    </Canvas>
+  );
+};
+
 export default function ElementMovementController() {
   const currentElementId = useAtomValue(activeElementID);
   const [ElementList, setElementList] = useAtom(ElementListAtom);
   const canvasDimension = useAtomValue(canvasDimensionsAtom);
-
-  // function onGestureHandler(
-  //   event: GestureEvent<PanGestureHandlerEventPayload>
-  // ) {
-  //   // console.log(event.nativeEvent.x,event.nativeEvent.y)
-  //   // setRectDimension({x:event.nativeEvent.x,y:event.nativeEvent.y})
-  //   let mapped = ElementList.map((el, eli) => {
-  //     if (eli == currentElementId) {
-  //       return { ...el, xPos: event.nativeEvent.x, yPos: event.nativeEvent.y };
-  //     } else {
-  //       return el;
-  //     }
-  //   });
-
-  //   setElementList(mapped);
-  // }
 
   const panGesture = Gesture.Pan()
     .onUpdate((event) => {
@@ -53,14 +56,6 @@ export default function ElementMovementController() {
       setElementList(mapped);
     })
     .onEnd((event) => {
-      // let mapped = ElementList.map((el, eli) => {
-      //   if (eli == currentElementId) {
-      //     return { ...el, xPos: event.x, yPos: event.y };
-      //   } else {
-      //     return el;
-      //   }
-      // });
-      // setElementList(mapped);
     });
 
   const pinchGesture = Gesture.Pinch()
@@ -106,27 +101,13 @@ export default function ElementMovementController() {
       setElementList(mapped);
     })
     .onEnd((event) => {
-      // let mapped = ElementList.map((el, eli) => {
-      //   if (eli == currentElementId) {
-      //     return { ...el, width: event.scale, height: event.scale };
-      //   } else {
-      //     return el;
-      //   }
-      // });
-      // setElementList(mapped);
     });
 
   return (
     <GestureHandlerRootView style={styles.main}>
       <GestureDetector gesture={Gesture.Race(panGesture, pinchGesture)}>
-        <View
-          style={{
-            height: 250,
-            width: 250,
-            backgroundColor: "red",
-            borderRadius: 20,
-          }}
-        ></View>
+          <Neumorphism/>
+        
       </GestureDetector>
     </GestureHandlerRootView>
   );

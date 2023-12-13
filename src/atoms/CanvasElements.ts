@@ -25,6 +25,9 @@ export const canvasDimensionsAtom = atom<canvasDimensions | null>(null);
 export const ElementListAtom = atom<(typeof sampleTemples)["canvasElement"]>(
   sampleTemples.canvasElement
 );
+export const CanvasBackgroundAtom = atom<
+  (typeof sampleTemples)["canvasDimensions"]
+>(sampleTemples.canvasDimensions);
 export const activeElementAtom = atom<activeElementType | null>(null);
 export const activeElementID = atom<number>(-1);
 export const canvasElementModeAtom = atom<canvasElementModeType>({

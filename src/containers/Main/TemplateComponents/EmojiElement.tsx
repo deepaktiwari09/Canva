@@ -101,7 +101,7 @@ export default function EmojiElement({ isVisible }: props) {
 const styles = StyleSheet.create({
   elementBox: {
     borderRadius: 10,
-    backgroundColor: "rgba(150,200,250,1)",
+    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
     height: 45,

@@ -58,9 +58,163 @@ export const MenuList = [
       fontColor: "black",
     },
   },
+  {
+    type: "IMAGE_BACKGROUND",
+    display: "background",
+    xPos: 30,
+    yPos: 30,
+    height: 500,
+    width: 500,
+    meta: {
+      roundness: 0,
+      uri: "https://marketplace.canva.com/EAFCO6pfthY/1/0/1600w/canva-blue-green-watercolor-linktree-background-F2CyNS5sQdM.jpg",
+    },
+  },
+];
+
+export const TextList = [
+  // Heading 1
+  {
+    type: "TEXT",
+    display: "Heading 1",
+    xPos: 30,
+    yPos: 30,
+    height: 50,
+    width: 300,
+    meta: {
+      text: "Heading 1",
+      fontSize: 36,
+      fontWeight: "700",
+      fontColor: "black",
+    },
+  },
+
+  // Heading 2
+  {
+    type: "TEXT",
+    display: "Heading 2",
+    xPos: 30,
+    yPos: 30,
+    height: 40,
+    width: 250,
+    meta: {
+      text: "Heading 2",
+      fontSize: 32,
+      fontWeight: "600",
+      fontColor: "black",
+    },
+  },
+
+  // Heading 3
+  {
+    type: "TEXT",
+    display: "Heading 3",
+    xPos: 30,
+    yPos: 30,
+    height: 32,
+    width: 200,
+    meta: {
+      text: "Heading 3",
+      fontSize: 28,
+      fontWeight: "600",
+      fontColor: "black",
+    },
+  },
+
+  // Heading 4
+  {
+    type: "TEXT",
+    display: "Heading 4",
+    xPos: 30,
+    yPos: 30,
+    height: 28,
+    width: 180,
+    meta: {
+      text: "Heading 4",
+      fontSize: 24,
+      fontWeight: "500",
+      fontColor: "black",
+    },
+  },
+
+  // Heading 5
+  {
+    type: "TEXT",
+    display: "Heading 5",
+    xPos: 30,
+    yPos: 30,
+    height: 24,
+    width: 160,
+    meta: {
+      text: "Heading 5",
+      fontSize: 20,
+      fontWeight: "500",
+      fontColor: "black",
+    },
+  },
+
+  // Heading 6
+  {
+    type: "TEXT",
+    display: "Heading 6",
+    xPos: 30,
+    yPos: 30,
+    height: 20,
+    width: 140,
+    meta: {
+      text: "Heading 6",
+      fontSize: 18,
+      fontWeight: "500",
+      fontColor: "black",
+    },
+  },
+
+  // Paragraph
+  {
+    type: "TEXT",
+    display: "Paragraph",
+    xPos: 30,
+    yPos: 30,
+    height: 120,
+    width: 300,
+    meta: {
+      text: "This is a paragraph of text.",
+      fontSize: 16,
+      fontWeight: "400",
+      fontColor: "black",
+    },
+  },
 ];
 
 export const VectorList = [
+  {
+    type: "VECTOR",
+    display: "Line",
+    xPos: 50,
+    yPos: 50,
+    height: 5,
+    width: 120,
+    meta: {
+      backgroundColor: "black",
+      borderColor: "black",
+      borderWidth: 1,
+      roundness: 0,
+    },
+  },
+  {
+    type: "VECTOR",
+    display: "Bold Line",
+    xPos: 50,
+    yPos: 50,
+    height: 10,
+    width: 120,
+    meta: {
+      backgroundColor: "black",
+      borderColor: "black",
+      borderWidth: 1,
+      roundness: 0,
+    },
+  },
   {
     type: "VECTOR",
     display: "Rectangle",
@@ -101,6 +255,172 @@ export const VectorList = [
       borderColor: "black",
       borderWidth: 1,
       roundness: 50,
+    },
+  },
+];
+
+export const BackgroundColorList = [
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "rgba(243,243,243,1)",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightblue",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightcoral",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightgreen",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightpink",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightyellow",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightcyan",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightgoldenrodyellow",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightgray",
+      uri: "",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "lightseagreen",
+      uri: "",
+    },
+  },
+];
+
+export const BackgroundImageList = [
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702425600&semt=sph",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://png.pngtree.com/thumb_back/fh260/background/20220314/pngtree-watercolor-colorful-pink-green-background-psd-and-png-image_1067532.jpg",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://png.pngtree.com/background/20210714/original/pngtree-beautiful-elegant-pink-red-purple-watercolor-smudge-background-picture-image_1220864.jpg",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjU0NmJhdGNoMy1teW50LTM0LWJhZGdld2F0ZXJjb2xvcl8xLmpwZw.jpg",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://png.pngtree.com/thumb_back/fh260/background/20210303/pngtree-simple-watercolor-clean-background-image_577072.jpg",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://png.pngtree.com/background/20210715/original/pngtree-colorful-red-orange-green-gold-line-watercolor-background-picture-image_1329151.jpg",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://png.pngtree.com/background/20210715/original/pngtree-watercolor-style-abstract-background-picture-image_1327528.jpg",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://png.pngtree.com/background/20210715/original/pngtree-watercolor-style-abstract-creative-background-picture-image_1327531.jpg",
+    },
+  },
+  {
+    width: 500,
+    height: 500,
+    background: {
+      color: "white",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Wk9nV7Fyzd4pTA4-GlyrTEUBUQsGRQ3WfGj3ATd4gYw9_br99Chapq5KyK_0G59yskY&usqp=CAU",
     },
   },
 ];

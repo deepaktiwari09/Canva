@@ -2,37 +2,20 @@ export const sampleTemples = {
   canvasDimensions: {
     width: 500,
     height: 500,
+    background: {
+      color: "white",
+      uri: "https://img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702339200&semt=ais",
+    },
   },
   canvasElement: [
     {
-      type: "IMAGE",
-      xPos: 0,
-      yPos: 0,
-      height: 500,
-      width: 500,
-      meta: {
-        uri: "https://marketplace.canva.com/EAFCO6pfthY/1/0/1600w/canva-blue-green-watercolor-linktree-background-F2CyNS5sQdM.jpg",
-      },
-    },
-    {
-      type: "VECTOR",
-      xPos: 10,
-      yPos: 10,
-      height: 100,
-      width: 100,
-      meta: {
-        roundness: 25,
-        backgroundColor: "white",
-      },
-    },
-    {
       type: "TEXT",
       xPos: 125,
-      yPos: 270,
+      yPos: 200,
       height: 100,
       width: 100,
       meta: {
-        text: "light studio",
+        text: "Hello World!",
         fontSize: 32,
         fontWeight: "700",
         fontColor: "black",

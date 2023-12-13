@@ -56,14 +56,14 @@ export default function BottomPanel({ CanvasRef }: props) {
 const styles = StyleSheet.create({
   main: {
     height: height - width,
-    backgroundColor: "green",
+    // backgroundColor: "green",
     justifyContent: "space-between",
   },
   container:{
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: width,
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
     flexDirection:'row'
   }
 });
