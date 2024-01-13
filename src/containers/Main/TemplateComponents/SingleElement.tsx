@@ -28,6 +28,7 @@ import {
 } from "@/atoms/CanvasElements";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { fontPixel, heightPixel, widthPixel } from "@/utils/responsive";
 
 const { height, width } = Dimensions.get("window");
 
@@ -81,8 +82,8 @@ export default function SingleElement({
 
   const position = useMemo(() => {
     if (isCenter) {
-      let yPos = getElementCenterPositionValue(width, rectHeight);
-      let xPos = getElementCenterPositionValue(width, rectWidth);
+      let yPos =getElementCenterPositionValue(width, rectHeight)
+      let xPos = getElementCenterPositionValue(width, rectWidth)
       return { xPos, yPos };
     } else {
       let { xPos, yPos, ...rest } = RectDimension;
@@ -110,10 +111,10 @@ export default function SingleElement({
         style={{
           position: "absolute",
           zIndex: layerIndex,
-          left: position.xPos,
-          top: position.yPos,
-          width: rectWidth,
-          height: rectHeight,
+          left: widthPixel(position.xPos),
+          top: heightPixel(position.yPos),
+          width: widthPixel(rectWidth),
+          height: heightPixel(rectHeight),
           borderRadius: meta.roundness ?? 10,
           backgroundColor: meta.backgroundColor ?? "red",
           borderColor: activeIndex == layerIndex ? "black" : "white",
@@ -141,13 +142,13 @@ export default function SingleElement({
         onPress={selectElement}
         style={{
           borderColor: activeIndex == layerIndex ? "black" : "white",
-          borderWidth: 1,
+          borderWidth: activeIndex == layerIndex ? 1 : 0,
           position: "absolute",
           zIndex: layerIndex,
-          top: position.yPos,
-          left: position.xPos,
-          height: rectHeight,
-          width: rectWidth,
+          top: heightPixel(position.yPos),
+          left: widthPixel(position.xPos),
+          height: heightPixel(rectHeight),
+          width: widthPixel(rectWidth),
         }}
       >
         <DeleteElementButton
@@ -165,7 +166,7 @@ export default function SingleElement({
             height: rectHeight,
             width: rectWidth,
           }}
-          source={{ uri: meta.uri }}
+          source={meta.uri.length > 0 ? { uri: meta.uri } : meta.localUri}
           resizeMode="stretch"
         />
       </Pressable>
@@ -179,7 +180,7 @@ export default function SingleElement({
     });
     const fontStyle = {
       fontFamily,
-      fontSize: meta.fontSize ?? 22,
+      fontSize: fontPixel(meta.fontSize ?? 22),
       fontStyle: "italic",
       fontWeight: "700",
       color: meta.fontColor ?? "black",
@@ -191,8 +192,8 @@ export default function SingleElement({
         style={{
           position: "absolute",
           zIndex: layerIndex,
-          top: position.yPos,
-          left: position.xPos,
+          top: heightPixel(position.yPos),
+          left: widthPixel(position.xPos),
           // height: rectHeight,
           // width: 400,
           backgroundColor:
@@ -226,7 +227,7 @@ export default function SingleElement({
 
   if (type == "EMOJI") {
     const fontStyle = {
-      fontSize: meta.fontSize ?? 22,
+      fontSize: fontPixel(meta.fontSize ?? 22),
     };
 
     return (
@@ -235,8 +236,8 @@ export default function SingleElement({
         style={{
           position: "absolute",
           zIndex: layerIndex,
-          top: position.yPos,
-          left: position.xPos,
+          top: heightPixel(position.yPos),
+          left: widthPixel(position.xPos),
           // height: rectHeight,
           // width: 400,
           backgroundColor: "transparent",

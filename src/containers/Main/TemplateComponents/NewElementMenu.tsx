@@ -10,6 +10,7 @@ import VectorElement from "./VectorElement";
 import ImageElement from "./ImageElement";
 import EmojiElement from "./EmojiElement";
 import CanvasBackgroundElement from "./CanvasBackgroundElement";
+import { heightPixel, widthPixel } from '@/utils/responsive';
 
 type props = {
   onSharePostPressed: () => void;
@@ -20,9 +21,9 @@ export default function NewElementMenu({ onSharePostPressed }: props) {
   return (
     <View style={styles.main}>
       <SimpleGrid
-        itemDimension={55}
+        itemDimension={widthPixel(55)}
         data={MenuList}
-        style={{maxWidth:150}}
+        style={{maxWidth:widthPixel(150)}}
         renderItem={({ item }) => {
           return (
             <View>
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor: "lightblue",
     paddingVertical: 5,
     paddingHorizontal:5,
-    width: 155,
+    width: widthPixel(155),
 
   },
   elementBox: {
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(150,200,250,1)",
     justifyContent: "center",
     alignItems: "center",
-    height:45
+    height:heightPixel(45)
   },
 });
 

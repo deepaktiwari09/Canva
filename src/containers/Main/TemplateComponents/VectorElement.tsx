@@ -7,6 +7,7 @@ import RBSheet, { RBSheetProps } from "react-native-raw-bottom-sheet";
 import { MenuList, VectorList } from "../constents";
 const { height, width } = Dimensions.get("window");
 import { FlatGrid } from "react-native-super-grid";
+import { fontPixel } from "@/utils/responsive";
 
 type props = {
   isVisible: boolean;
@@ -32,7 +33,7 @@ export default function VectorElement({ isVisible }: props) {
         // setActiveIndex(length);
       }}
     >
-      <MaterialCommunityIcons name="vector-square" color={"black"} size={30} />
+      <MaterialCommunityIcons name="vector-square" color={"black"} size={fontPixel(30) } />
       <RBSheet
         ref={sheetRef}
         closeOnDragDown={true}

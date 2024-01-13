@@ -13,6 +13,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import RBSheet, { RBSheetProps } from "react-native-raw-bottom-sheet";
 import { EmojiList, MenuList } from "../constents";
 import { FlatGrid } from "react-native-super-grid";
+import { fontPixel, heightPixel } from "@/utils/responsive";
 
 const { height, width } = Dimensions.get("window");
 
@@ -35,7 +36,7 @@ export default function EmojiElement({ isVisible }: props) {
         onIconPressed();
       }}
     >
-      <MaterialCommunityIcons name="sticker-emoji" color={"black"} size={30} />
+      <MaterialCommunityIcons name="sticker-emoji" color={"black"} size={fontPixel(30)} />
 
       <RBSheet
         ref={sheetRef}
@@ -62,7 +63,7 @@ export default function EmojiElement({ isVisible }: props) {
                 marginBottom: 20,
               }}
             >
-              <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+              <Text style={{ fontSize: fontPixel(18) , fontWeight: "600", color: "gray" }}>
                 Choose Emoji
               </Text>
             </View>
@@ -71,7 +72,7 @@ export default function EmojiElement({ isVisible }: props) {
           renderItem={({ item, index }) => {
             return (
               <Pressable onPress={() => onEmojiSelected(item)}>
-                <Text style={{ fontSize: 40 }}>{item}</Text>
+                <Text style={{ fontSize: fontPixel(40) }}>{item}</Text>
               </Pressable>
             );
           }}
@@ -104,6 +105,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    height: 45,
+    height: heightPixel(45) ,
   },
 });

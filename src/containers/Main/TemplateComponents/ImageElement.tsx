@@ -5,6 +5,7 @@ import { ElementListAtom, activeElementID } from "@/atoms/CanvasElements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { MenuList } from "../constents";
 import { launchImageLibrary } from "react-native-image-picker";
+import { fontPixel, heightPixel } from "@/utils/responsive";
 
 type props = {
   isVisible: boolean;
@@ -43,7 +44,7 @@ export default function ImageElement({ isVisible }: props) {
         });
       }}
     >
-      <MaterialCommunityIcons name="image-outline" color={"black"} size={30} />
+      <MaterialCommunityIcons name="image-outline" color={"black"} size={fontPixel(30)} />
     </Pressable>
   );
 }
@@ -54,6 +55,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    height: 45,
+    height: heightPixel(45),
   },
 });

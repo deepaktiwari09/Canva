@@ -23,6 +23,7 @@ import {
   VectorList,
 } from "../constents";
 import { launchImageLibrary } from "react-native-image-picker";
+import { fontPixel, heightPixel, widthPixel } from "@/utils/responsive";
 
 const { height, width } = Dimensions.get("window");
 
@@ -54,7 +55,7 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
       <MaterialCommunityIcons
         name="image-filter-hdr"
         color={"black"}
-        size={30}
+        size={fontPixel(30)}
       />
       <RBSheet
         ref={sheetRef}
@@ -68,7 +69,7 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
             backgroundColor: "#000",
           },
         }}
-        height={height / 1.7}
+        height={height / 1.5}
       >
         <View style={{ flex: 1 }}>
           <View
@@ -79,7 +80,7 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
               marginBottom: 30,
             }}
           >
-            <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+            <Text style={{ fontSize: fontPixel(18) , fontWeight: "600", color: "gray" }}>
               Choose Background
             </Text>
           </View>
@@ -93,8 +94,8 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
           >
             <Pressable
               style={{
-                height: 100,
-                width: 100,
+                height: heightPixel(100),
+                width: widthPixel(100) ,
                 backgroundColor: "rgba(230,230,230,1)",
                 borderRadius: 10,
                 marginHorizontal: 5,
@@ -124,10 +125,10 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
             >
               <MaterialCommunityIcons
                 name="image-area"
-                size={32}
+                size={fontPixel(32)}
                 color={"black"}
               />
-              <Text>Gallery</Text>
+              <Text style={{fontSize:fontPixel(16)}}>Gallery</Text>
             </Pressable>
             {/* <Pressable
               style={{
@@ -147,7 +148,7 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
 
           <Text
             style={{
-              fontSize: 18,
+              fontSize: fontPixel(18),
               marginHorizontal: 20,
               marginBottom: 15,
               marginTop: 20,
@@ -166,8 +167,8 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
                 return (
                   <Pressable
                     style={{
-                      height: 60,
-                      width: 60,
+                      height: heightPixel(60) ,
+                      width: widthPixel(60) ,
                       borderRadius: 50,
                       marginHorizontal: 5,
                       backgroundColor: item.background.color,
@@ -184,7 +185,7 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
 
           <Text
             style={{
-              fontSize: 18,
+              fontSize: fontPixel(18),
               marginHorizontal: 20,
               marginBottom: 15,
               marginTop: 20,
@@ -209,8 +210,8 @@ export default function CanvasBackgroundElement({ isVisible }: props) {
                   >
                     <Image
                       style={{
-                        height: 100,
-                        width: 100,
+                        height: heightPixel(100),
+                        width: widthPixel(100) ,
                         borderRadius: 10,
                         marginHorizontal: 5,
                       }}
@@ -338,6 +339,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    height: 45,
+    height: heightPixel(45) ,
   },
 });

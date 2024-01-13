@@ -14,6 +14,7 @@ import ElementMovementController from "./ElementMovementController";
 import ViewShot from "react-native-view-shot";
 import Share, { Social } from "react-native-share";
 import ElementEditView from "./ElementEditView";
+import { fontPixel, heightPixel } from "@/utils/responsive";
 
 const { height, width } = Dimensions.get("window");
 
@@ -30,19 +31,30 @@ export default function BottomPanel({ CanvasRef }: props) {
         <ElementMovementController />
         <NewElementMenu
           onSharePostPressed={() => {
-            makeAndShareImage("Share via","New Messsage");
+            makeAndShareImage("Share via", "New Messsage");
           }}
         />
       </View>
-      <View style={{height:100,justifyContent:'center',alignItems:'center'}}>
-        <Pressable 
-          onPress={()=>{
-            makeAndShareImage("I created this image","New Image")
+      <View
+        style={{
+          height: heightPixel(100),
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Pressable
+          onPress={() => {
+            makeAndShareImage("I created this image", "New Image");
           }}
-          style={{backgroundColor:'green',paddingHorizontal:20,paddingVertical:5,borderRadius:15}}>
-            <Text style={{color:'white',fontSize:20}}>Share</Text>
-          </Pressable>
-
+          style={{
+            backgroundColor: "green",
+            paddingHorizontal: 20,
+            paddingVertical: 5,
+            borderRadius: 15,
+          }}
+        >
+          <Text style={{ color: "white", fontSize: fontPixel(20) }}>Share</Text>
+        </Pressable>
       </View>
     </View>
   ) : (
@@ -53,27 +65,26 @@ export default function BottomPanel({ CanvasRef }: props) {
     try {
       let url = await CanvasRef.current?.capture();
 
-      if(url){
-        await Share.open({title,message,url});
+      if (url) {
+        await Share.open({ title, message, url });
       }
-      
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 }
 
 const styles = StyleSheet.create({
   main: {
-    height: height - width,
+    height: width,
     // backgroundColor: "green",
-    // justifyContent: "space-between",
   },
-  container:{
+  container: {
     paddingVertical: 10,
     paddingHorizontal: 10,
-    width: width,
+    // width: width -40,
     // backgroundColor: "yellow",
-    flexDirection:'row'
-  }
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 });

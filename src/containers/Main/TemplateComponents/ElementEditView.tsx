@@ -5,6 +5,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { launchImageLibrary } from "react-native-image-picker";
 import { sampleTemples as ST } from "../sampleTemplet";
 import { ElementListAtom, activeElementID, canvasElementModeAtom } from "@/atoms/CanvasElements";
+import { fontPixel, heightPixel, widthPixel } from '@/utils/responsive';
 
 const { height, width } = Dimensions.get("window");
 
@@ -36,7 +37,7 @@ export default function ElementEditView() {
               borderRadius: 10,
               borderColor: "black",
               borderWidth: 1,
-              width: 220,
+              width: widthPixel(220),
               paddingHorizontal: 20,
               paddingVertical: 10,
             }}
@@ -67,15 +68,15 @@ export default function ElementEditView() {
       return (
         <GestureHandlerRootView
           style={{
-            height: height / 3,
+            height: heightPixel(height / 3) ,
             justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Pressable
             style={{
-              height: 150,
-              width: 150,
+              height: heightPixel(150) ,
+              width: widthPixel(150) ,
               borderStyle: "dotted",
               borderWidth: 1,
               justifyContent: "center",
@@ -120,7 +121,7 @@ export default function ElementEditView() {
                 borderRadius: 10,
                 borderColor: "black",
                 borderWidth: 1,
-                width: 100,
+                width: widthPixel(100),
                 paddingHorizontal: 20,
                 paddingVertical: 10,
               }}
@@ -151,7 +152,7 @@ export default function ElementEditView() {
                 borderRadius: 10,
                 borderColor: "black",
                 borderWidth: 1,
-                width: 100,
+                width: widthPixel(100),
                 paddingHorizontal: 20,
                 paddingVertical: 10,
               }}
@@ -190,7 +191,7 @@ export default function ElementEditView() {
       return (
         <GestureHandlerRootView
           style={{
-            height: height / 3,
+            height: heightPixel(height / 3) ,
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -243,7 +244,7 @@ export default function ElementEditView() {
                 borderRadius: 10,
                 borderColor: "black",
                 borderWidth: 1,
-                width: 100,
+                width: widthPixel(100) ,
                 paddingHorizontal: 20,
                 paddingVertical: 10,
               }}
@@ -274,7 +275,7 @@ export default function ElementEditView() {
                 borderRadius: 10,
                 borderColor: "black",
                 borderWidth: 1,
-                width: 100,
+                width: widthPixel(100),
                 paddingHorizontal: 20,
                 paddingVertical: 10,
               }}
@@ -303,7 +304,7 @@ export default function ElementEditView() {
           <Pressable
             onPress={() => setCanvasMode({ mode: "View", elementType: null })}
           >
-            <Text>Done</Text>
+            <Text style={{fontSize:fontPixel(16)}}>Done</Text>
           </Pressable>
         </GestureHandlerRootView>
       );

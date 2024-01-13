@@ -7,6 +7,7 @@ import { MenuList, TextList } from "../constents";
 import RBSheet, { RBSheetProps } from "react-native-raw-bottom-sheet";
 const { height, width } = Dimensions.get("window");
 import { FlatGrid } from "react-native-super-grid";
+import { fontPixel, heightPixel, widthPixel } from "@/utils/responsive";
 
 type props = {
   isVisible: boolean;
@@ -32,7 +33,7 @@ export default function TextElement({ isVisible }: props) {
         // setActiveIndex(length);
       }}
     >
-      <MaterialCommunityIcons name="format-text" color={"black"} size={30} />
+      <MaterialCommunityIcons name="format-text" color={"black"} size={fontPixel(30)} />
       <RBSheet
         ref={sheetRef}
         closeOnDragDown={true}
@@ -52,13 +53,13 @@ export default function TextElement({ isVisible }: props) {
           ListHeaderComponent={
             <View
               style={{
-                width: width,
+                width: width ,
                 alignItems: "center",
                 marginTop: 10,
-                marginBottom: 50,
+                marginBottom: heightPixel(50) ,
               }}
             >
-              <Text style={{ fontSize: 18, fontWeight: "600", color: "gray" }}>
+              <Text style={{ fontSize: fontPixel(18) , fontWeight: "600", color: "gray" }}>
                 Choose Shapes
               </Text>
             </View>
@@ -78,7 +79,7 @@ export default function TextElement({ isVisible }: props) {
                 />
                 <Text
                   style={{
-                    fontSize: item.meta.fontSize,
+                    fontSize: fontPixel(item.meta.fontSize) ,
                     textAlign: "center",
                     marginTop: 10,
                     fontWeight: item.meta.fontWeight,
@@ -114,6 +115,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    height: 45,
+    height: heightPixel(45) ,
   },
 });

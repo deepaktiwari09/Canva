@@ -70,7 +70,7 @@ export default function CanvasEditorPanel({ CanvasRef }: props) {
       options={{
         fileName: `Canva_${dayjs().format("YYYYMMDD_hh_mm_ss")}`,
         format: "png",
-        quality: 0.9,
+        quality: 1,
       }}
     >
       {CanvasBackground.background.uri.length != 0 ? (

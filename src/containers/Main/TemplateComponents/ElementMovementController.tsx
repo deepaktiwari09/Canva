@@ -26,12 +26,13 @@ import {
   RoundedRect,
   Canvas
 } from "@shopify/react-native-skia";
+import { heightPixel, widthPixel } from "@/utils/responsive";
  
 const Neumorphism = () => {
   return (
-    <Canvas style={{ width: 256, height: 256 }}>
+    <Canvas style={{ width: widthPixel(256), height: heightPixel(256) }}>
       <Fill color="rgba(243,243,243,1)" />
-      <RoundedRect x={32} y={32} width={192} height={192} r={32} color="white">
+      <RoundedRect x={32} y={32} width={widthPixel(150)} height={heightPixel(150)} r={32} color="white">
         <Shadow dx={12} dy={12} blur={25} color="lightblue" />
         <Shadow dx={-12} dy={-12} blur={25} color="lightblue" />
       </RoundedRect>
@@ -116,8 +117,7 @@ export default function ElementMovementController() {
 const styles = StyleSheet.create({
   main: {},
   container: {
-    height: 250,
-    width: 250,
+    flexGrow:1,
     backgroundColor: "rgba(200,200,200,1)",
     borderRadius: 20,
   },
